@@ -22,6 +22,7 @@ Install the dependencies:
 
 ```bash
 npm install
+npm start
 ```
 
 ### Development
