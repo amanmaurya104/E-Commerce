@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import bgImage from '../assets/file.jpg'; // Make sure this file exists
+import bgImage from '../assets/file.jpg'; 
 
 export default function HeroSection() {
   return (
