@@ -7,9 +7,9 @@ const jwt = require('jsonwebtoken');
 const authenticate = require('../middlewares/authMiddleware');
 const { registerUser, loginUser, getUserProfile, logoutUser } = require('../controllers/authController');
 
-router.post('/register', registerUser);
-router.post('/login', loginUser);
+router.post('/registerUser', registerUser);
+router.post('/loginUser', loginUser);
 router.get('/profile', authenticate, getUserProfile);
-router.post('/logout', authenticate, logoutUser);
+router.post('/logoutUser', authenticate, logoutUser);
 
 module.exports = router;

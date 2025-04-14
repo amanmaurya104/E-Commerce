@@ -19,10 +19,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: ''
     },
-    isGoogleUser: {
-        type: Boolean,
-        default: false
-    },
     role : {
         type: String,
         enum: ['admin', 'user'],
