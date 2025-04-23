@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 
 exports.registerUser = async (req, res) => {
     try { 
-        const { name, email, password, avatar } = req.body;
+        const { name, email, password,role, avatar } = req.body;
         const userExists = await User.findOne({ email });
         if (userExists) {
             return res.status(400).json({ message: 'User already exists' });
@@ -12,7 +12,7 @@ exports.registerUser = async (req, res) => {
 
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        const user = new User({ name, email, password:hashedPassword, avatar });
+        const user = new User({ name, email, password:hashedPassword, role,avatar });
         await user.save();
         res.status(201).json({ message: 'User registered successfully' });
     }
@@ -34,7 +34,7 @@ exports.loginUser = async (req, res) => {
             return res.status(400).json({ message: 'Invalid credentials' });
         }
         // Generate JWT token
-        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1h' });
         res.cookie('token', token, { httpOnly: true });
         res.status(200).json({ message: 'Login successful', token });
     }

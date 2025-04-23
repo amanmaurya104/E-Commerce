@@ -4,7 +4,7 @@ const User = require('../models/User');
 const bcrypt = require('bcrypt');
 
 const jwt = require('jsonwebtoken');
-const authenticate = require('../middlewares/authMiddleware');
+const { authenticate } = require('../middlewares/authMiddleware');
 const { registerUser, loginUser, getUserProfile, logoutUser } = require('../controllers/authController');
 
 router.post('/registerUser', registerUser);
